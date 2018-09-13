@@ -1,0 +1,148 @@
+-WORST CASE TIME ANALYSIS FOR BUBBLE SORT :
+
+void sort(int *s, int c) {						
+	int i, j, temp, state;						......(A)
+	for(i = 0; i < c - 1; i++) {					......(B + cC + (c - 1)D) = (B + c(C + D) - D)
+		state = 0;						......((c - 1)E)
+		for(j = 0; j < c - i - 1; j++) {			......((c - 1)F + (((c(c - 1)/2) - c) + 1)G + ((c(c - 1)/2) - c)H)
+			if(s[j] > s[j + 1]) {				......(((c(c - 1)/2) - c)I)
+				state = 1;				......(((c(c - 1)/2) - c)J)
+				temp = s[j];				......(((c(c - 1)/2) - c)K)
+				s[j] = s[j + 1];			......(((c(c - 1)/2) - c)L)
+				s[j + 1] = temp;			......(((c(c - 1)/2) - c)M)
+			}
+		}
+		if(state == 0)						......((c - 1)N)
+			break;
+	}	
+}
+	
+THIS IS THE TIME TAKEN BY PROGRAM IN WORST CASE :
+	TIME = A + B + c(C + D) - D + (c - 1)E + (c - 1)F + (((c(c - 1)/2) - c) + 1)G + ((c(c - 1)/2) - c)H + ((c(c - 1)/2) - c)I + ((c(c - 			1)/2) - c)J + ((c(c - 1)/2) - c)K + ((c(c - 1)/2) - c)L + ((c(c - 1)/2) - c)M + (c - 1)N
+
+
+ALL CONSTANTS ARE ARBITRARY
+SIMPLIFYING THIS EQUATION WE GET TIME = Xc^2 + Yc + Z 
+AND HENCE THE BIG-OH(O) IS c^2
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+-BEST CASE TIME ANALYSIS FOR BUBBLE SORT :
+void sort(int *s, int c) {						
+	int i, j, temp, state;						......(A)
+	for(i = 0; i < c - 1; i++) {					......(B + C + D)
+		state = 0;						......(E)
+		for(j = 0; j < c - i - 1; j++) {			......(F + cG + (c - 1)H)
+			if(s[j] > s[j + 1]) {				......((c - 1)I)
+				state = 1;				
+				temp = s[j];				
+				s[j] = s[j + 1];			
+				s[j + 1] = temp;			
+			}
+		}
+		if(state == 0)						......(J)
+			break;						......(K)
+	}	
+}
+
+SIMILARLY FOR THE BEST CASE THE TIME TAKEN WILL CAN BE REPRESENTED BY :
+	TIME = A + B + C + D + E + F + cG + (c - 1)H + (c - 1)I + J + K 
+	     = Xc + Y
+
+AND HENCE THE OMEGA IS c.
+
+IN ANY OTHER CASE THE TIME TAKEN CAN BE GIVEN BY EQUATION Xc^2 + Yc + Z AND THE CONSTANTS DEPENDING ON HOW MUCH TIMES THE LOOP IS EXECUTED.
+
+NOW WE GIVE THE INPUT THROUGH RANDOM SO THE TIME TAKEN CAN BE GIVEN BY QUADRATIC EQUATION AS Pc^2 + Qc + R.
+COMPARING THIS TO THE GRAPH PLOTTED TELLS US THAT TIME TAKEN INCRESES QUADRATICALLY AS WE INCRESE THE NO OF INPUTS AND HENCE THE GRAPH IS QUADRATIC.
+
+--------------------------------------------------------------------------------------------------------------------------------------------
+
+TIME ANALYSIS FOR SELECTION SORT : 
+
+-WORST CASE TIME ANALYSIS FOR SELECTION SORT :
+
+void sort(int *s, int n) {
+	int i, j, temp, max, c = n - 1;				......(A)
+	for(i = 0; i < c; c--) {				......(B + (c + 1)C + cD)
+		max = i;					......(cE)
+		for(j = 0; j < c; j++) {			......(cF + ((c(c-1)/2) + 1)G + (c(c-1)/2))H))
+			if(s[max] < s[j + 1]) 			......(c(c-1)/2))I)
+				max = j + 1;			......(c(c-1)/2))J)
+		}
+		if(max != c) {					......(cK)
+			temp = s[max];				......(cL)
+			s[max] = s[c];				......(cM)
+			s[c] = temp;				......(cN)
+		}
+	}	
+} 
+
+HENCE THE TIME TAKEN BY SELECTION SORT IN WORST CASE WILL BE GIVEN BY :
+	
+	TIME = A + (B + (c + 1)C + cD) + (cE)+ (cF + ((c(c-1)/2) + 1)G + (c(c-1)/2))H)) + (c(c-1)/2))I)+ (c(c-1)/2))J) + (cK)+ (cL)+ (cM)+ 			(cN)
+	     = Xc^2 + Yc + Z
+	     
+AND HENCE THE BIG-OH(O) IS c^2
+
+-BEST CASE TIME ANALYSIS FOR SELECTION SORT :	 
+
+    
+void sort(int *s, int n) {
+	int i, j, temp, max, c = n - 1;				......(A)
+	for(i = 0; i < c; c--) {				......(B + (c + 1)C + cD)
+		max = i;					......(cE)
+		for(j = 0; j < c; j++) {			......(cF + ((c(c-1)/2) + 1)G + (c(c-1)/2))H))
+			if(s[max] < s[j + 1]) 			......(c(c-1)/2))I)
+				max = j + 1;			
+		}
+		if(max != c) {					......(cK)
+			temp = s[max];				
+			s[max] = s[c];				
+			s[c] = temp;				
+		}
+	}	
+} 
+     
+IN THE BEST CASE AS THE ARRAY WILL BE PERFECTLY SORTED SWAPPING WILL NOT TAKE EVEN ONCE TIME ANALYSIS WILL BE GIVEN BY ;
+
+TIME  = A + (B + (c + 1)C + cD) + (cE) + (cF + ((c(c-1)/2) + 1)G + (c(c-1)/2))H)) + (c(c-1)/2))I) + (cK)	     
+      = Xc^2 + Yc + Z
+	     
+HERE THE CONSTANTS X, Y, Z ARE LESS THEN THE CONSTANTS IN THE WORST CASE.
+
+AND HENCE THE OMEGA IS c^2.
+
+IN ANY OTHER CASE THE TIME TAKEN CAN BE GIVEN BY EQUATION Xc^2 + Yc + Z AND THE CONSTANTS DEPENDING ON HOW MUCH TIMES THE NUMBERS ARE SWAPPED.
+
+NOW WE GIVE THE INPUT THROUGH RANDOM SO THE TIME TAKEN CAN BE GIVEN BY QUADRATIC EQUATION AS Pc^2 + Qc + R.
+COMPARING THIS TO THE GRAPH PLOTTED TELLS US THAT TIME TAKEN INCRESES QUADRATICALLY AS WE INCRESE THE NO OF INPUTS AND HENCE THE GRAPH IS QUADRATIC.	     
+	     
+------------------------------------------------------------------------------------------------------------------------------------------
+
+NOW COMPARING THE BUBBLESORT AND SELECTION SORT GRAPH IN AN AVERAGE CASE THE TIME TAKEN BY BUBBLE SORT WILL ALWAYS BE MORE AS THE CONSTANTS WILL HAVE GREATER VALUE COMPARED TO SELECTION SORT AS IN SELECTION SORT THE NUMBER OF SWAPS ARE VERY LESS.
+AND THE GRAPH OF SELECTION SORT ALWAYS LIES BELOW THE GRAPH OG BUBBLE SORT.	     
+	     
+	     
+-------------------------------------------------------------------------------------------------------------------------------------------	     
+	     
+	     
+	     
+	     
+	     
+	     
+	     
+	     
+	     
+	     
+	     
+	     
+	     
+	     
+	     
+	     
+	     
+	     
+	     
+	     
+	     
+	     
